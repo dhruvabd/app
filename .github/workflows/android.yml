@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup JDK 21
@@ -21,9 +21,6 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: gradle
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
 
       - name: Install unzip
         run: sudo apt-get update && sudo apt-get install -y unzip
@@ -37,6 +34,9 @@ jobs:
 
       - name: Make Gradle executable
         run: chmod +x gradlew
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Debug Keystore
         run: |
